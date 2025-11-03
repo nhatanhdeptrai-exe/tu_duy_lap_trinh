@@ -174,6 +174,7 @@ def tim_kiem_mon_an(input_nguyen_lieu_chung):
     chinh_da_chuan_hoa = set()
     phu_da_chuan_hoa = set()
     tat_ca_khong_biet = set()
+    cac_tu_BIET_raw = set()
 
 
     for raw_token in ds_raw:
@@ -181,8 +182,10 @@ def tim_kiem_mon_an(input_nguyen_lieu_chung):
 
         if norm_token in DANH_MUC_CHINH:
             chinh_da_chuan_hoa.add(norm_token)
+            cac_tu_BIET_raw.add(raw_token)
         elif norm_token in DANH_MUC_PHU:
             phu_da_chuan_hoa.add(norm_token)
+            cac_tu_BIET_raw.add(raw_token)
 
         elif norm_token:
             luu_nguyen_lieu_moi("chung", raw_token, norm_token)
@@ -232,4 +235,5 @@ def tim_kiem_mon_an(input_nguyen_lieu_chung):
 
     if not str_hien_thi_chung:
         str_hien_thi_chung = "(Chưa nhận diện được nguyên liệu nào)"
-    return (str_hien_thi_chung, danh_sach_goi_y, tat_ca_khong_biet)
+
+    return (str_hien_thi_chung, danh_sach_goi_y, tat_ca_khong_biet, cac_tu_BIET_raw)
